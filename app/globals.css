@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
+/* ========================================
+   VASTRAAA DESIGN SYSTEM - Tailwind v4
+   "Dark Zara meets Rick Owens"
+======================================== */
+
+@theme {
+  /* Colors - Industrial Monochrome */
+  --color-void: #050505;
+  --color-paper: #EAEAEA;
+  --color-grid: #262626;
+  --color-accent: #FFFFFF;
+
+  /* Typography */
+  --font-clash: 'Clash Display', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Spacing */
+  --spacing-section: 8rem;
+}
+
+/* CSS Variables for dynamic use */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #EAEAEA;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+html {
+  background: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Noise Overlay for Cinematic Effect */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.group:hover .noise-overlay {
+  opacity: 0.15;
+}
+
+/* Grid Line Utility */
+.border-grid {
+  border-color: #262626;
+}
+
+/* Clash Display Headings */
+.font-clash {
+  font-family: var(--font-clash);
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+/* Space Mono for Data/UI */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Cinematic Image Filter - Default State */
+.cinematic-default {
+  filter: grayscale(100%) contrast(125%);
+  transition: filter 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Cinematic Image Filter - Hover State */
+.cinematic-hover:hover {
+  filter: grayscale(20%) brightness(110%);
+  transform: scale(1.05);
+}
+
+/* Selection Style */
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Marquee Animation Override */
+[data-marquee] {
+  --gap: 2rem;
+}
+
+/* Marquee Keyframes */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 2rem));
+  }
+}
+
+/* Pause on hover utility */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
