@@ -96,10 +96,10 @@ export const metadata: Metadata = {
   // Manifest for PWA
   manifest: "/manifest.json",
   
-  // Verification (add your IDs when ready)
-  // verification: {
-  //   google: "your-google-verification-id",
-  // },
+  // Verification
+  verification: {
+    google: "BxCZ7CTa5tnRfTeYvv5R5GKlsQmHQYkWpdDBl7NBmGs",
+  },
   
   // Category
   category: "fashion",
