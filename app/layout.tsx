@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
@@ -20,10 +20,95 @@ const spaceMono = Space_Mono({
   display: "swap",
 });
 
+// ===== SEO METADATA =====
 export const metadata: Metadata = {
-  title: "VASTRAAA // POST-DIGITAL WEAR",
-  description: "Clothing as Architecture. Urban Archive 2026.",
-  keywords: ["fashion", "avant-garde", "streetwear", "post-digital", "archive"],
+  // Basic
+  title: {
+    default: "VASTRAAA — Post-Digital Wear",
+    template: "%s | VASTRAAA",
+  },
+  description: "Clothing as Architecture. Avant-garde fashion for the urban architect. Explore our curated archive of post-digital wear.",
+  keywords: [
+    "fashion",
+    "avant-garde",
+    "streetwear",
+    "post-digital",
+    "archive",
+    "luxury fashion",
+    "designer clothing",
+    "urban wear",
+    "Rick Owens style",
+    "minimalist fashion",
+  ],
+  authors: [{ name: "VASTRAAA", url: "https://vastraaa.com" }],
+  creator: "VASTRAAA",
+  publisher: "VASTRAAA",
+  
+  // Open Graph (Facebook, LinkedIn, etc.)
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://vastraaa.com",
+    siteName: "VASTRAAA",
+    title: "VASTRAAA — Post-Digital Wear",
+    description: "Clothing as Architecture. Avant-garde fashion for the urban architect.",
+    images: [
+      {
+        url: "/images/overcoat.jpg",
+        width: 1200,
+        height: 630,
+        alt: "VASTRAAA - Urban Archive Collection",
+      },
+    ],
+  },
+  
+  // Twitter Card
+  twitter: {
+    card: "summary_large_image",
+    title: "VASTRAAA — Post-Digital Wear",
+    description: "Clothing as Architecture. Avant-garde fashion for the urban architect.",
+    images: ["/images/overcoat.jpg"],
+    creator: "@vastraaa",
+  },
+  
+  // Robots
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  
+  // Icons (Next.js auto-detects icon.png and apple-icon.png)
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
+  
+  // Manifest for PWA
+  manifest: "/manifest.json",
+  
+  // Verification (add your IDs when ready)
+  // verification: {
+  //   google: "your-google-verification-id",
+  // },
+  
+  // Category
+  category: "fashion",
+};
+
+// Viewport configuration (separated in Next.js 14+)
+export const viewport: Viewport = {
+  themeColor: "#050505",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -33,6 +118,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceMono.variable}`}>
+      <head>
+        {/* Structured Data - Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "VASTRAAA",
+              url: "https://vastraaa.com",
+              logo: "https://vastraaa.com/icon.png",
+              description: "Post-digital wear for the urban architect",
+              sameAs: [
+                "https://instagram.com/vastraaa",
+                "https://twitter.com/vastraaa",
+              ],
+            }),
+          }}
+        />
+        {/* Structured Data - WebSite (for sitelinks search) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "VASTRAAA",
+              url: "https://vastraaa.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://vastraaa.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="bg-void text-paper antialiased">
         <LenisProvider>
           {children}

@@ -1,0 +1,9 @@
+# Sitemap
+User-agent: *
+Allow: /
+
+# Host
+Host: https://vastraaa.com
+
+# Sitemap
+Sitemap: https://vastraaa.com/sitemap.xml
