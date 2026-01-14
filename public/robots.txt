@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://vastraaa.com
+Host: https://vastraa-seven.vercel.app
 
 # Sitemap
-Sitemap: https://vastraaa.com/sitemap.xml
+Sitemap: https://vastraa-seven.vercel.app/sitemap.xml

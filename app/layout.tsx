@@ -22,6 +22,9 @@ const spaceMono = Space_Mono({
 
 // ===== SEO METADATA =====
 export const metadata: Metadata = {
+  // Base URL for all relative URLs
+  metadataBase: new URL("https://vastraa-seven.vercel.app"),
+  
   // Basic
   title: {
     default: "VASTRAAA — Post-Digital Wear",
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
     "Rick Owens style",
     "minimalist fashion",
   ],
-  authors: [{ name: "VASTRAAA", url: "https://vastraaa.com" }],
+  authors: [{ name: "VASTRAAA", url: "https://vastraa-seven.vercel.app" }],
   creator: "VASTRAAA",
   publisher: "VASTRAAA",
   
