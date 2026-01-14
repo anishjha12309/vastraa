@@ -154,6 +154,60 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* Structured Data - SiteNavigationElement (for sitelinks) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "SiteNavigationElement",
+                  "@id": "https://vastraaa.com/#collection-nav",
+                  name: "The Collection",
+                  description: "Shop the latest collection of avant-garde fashion",
+                  url: "https://vastraaa.com/collection",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "@id": "https://vastraaa.com/#lookbook-nav",
+                  name: "Lookbook",
+                  description: "Editorial fashion photography and styling",
+                  url: "https://vastraaa.com/lookbook",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  "@id": "https://vastraaa.com/#about-nav",
+                  name: "About",
+                  description: "Our manifesto: Clothing as Architecture",
+                  url: "https://vastraaa.com/about",
+                },
+              ],
+            }),
+          }}
+        />
+        {/* Structured Data - ItemList (product collection) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              name: "VASTRAAA Collection",
+              description: "Curated archive of post-digital fashion",
+              numberOfItems: 7,
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Shadow Knit Jumper", url: "https://vastraaa.com/collection#jumper" },
+                { "@type": "ListItem", position: 2, name: "Archive Hoodie", url: "https://vastraaa.com/collection#hoodie" },
+                { "@type": "ListItem", position: 3, name: "Distressed Leather", url: "https://vastraaa.com/collection#leather" },
+                { "@type": "ListItem", position: 4, name: "Deconstructed Cardigan", url: "https://vastraaa.com/collection#cardigan" },
+                { "@type": "ListItem", position: 5, name: "Bone White Knit", url: "https://vastraaa.com/collection#whitejumper" },
+                { "@type": "ListItem", position: 6, name: "Atelier Set", url: "https://vastraaa.com/collection#atelier" },
+                { "@type": "ListItem", position: 7, name: "Rugged Black Denim", url: "https://vastraaa.com/collection#denim" },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="bg-void text-paper antialiased">
         <LenisProvider>
